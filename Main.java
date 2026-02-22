@@ -22,7 +22,6 @@ public class Main {
 	{" ********  " ,
 	 " **    **  " ,
 	 " **    **  " ,
-	 " **    **  " ,
 	 " ********  " ,
 	 " **        " ,
 	 " **        " ,
@@ -43,7 +42,7 @@ public class Main {
 		String row[]=new String[Letters.length];
 		for (int j=0;j<Letters.length;j++)
 		{
-			row[j]=Letters[j][row];
+			row[j]=Letters[j][i];
 		}
 		System.out.println(String.join(" ",row));
 	 }
