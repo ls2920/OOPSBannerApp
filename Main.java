@@ -45,7 +45,7 @@ public class Main
 		
 		for (int i=0; i< oPattern.length; i++)
 		{
-			System.out.println(String.join(" ",oPattern[i],pPattern[i],sPattern[i]));
+			System.out.println(String.join(" ",oPattern[i],oPattern[i],pPattern[i],sPattern[i]));
 		}
 	}
 }
