@@ -1,50 +1,19 @@
-public class Main {
-    public static void main(String[] args) {
-	String Letters[][]=
+public class Main
+{
+	public static void main(String args[])
 	{
-	
-	{"  ******  " ,
-	 " **    ** " ,
-	 "**      **" ,
-	 "**      **" ,
-	 "**      **" ,
-	 " **    ** " ,
-	 "  ******  "  },
-	 
-	{"  ******  " ,
-	 " **    ** " ,
-	 "**      **" ,
-	 "**      **" ,
-	 "**      **" ,
-	 " **    ** " ,
-	 "  ******  "  },
-	 
-	{" ********  " ,
-	 " **    **  " ,
-	 " **    **  " ,
-	 " ********  " ,
-	 " **        " ,
-	 " **        " ,
-	 " **        " },
-	 
-	{"  ******  " ,
-	 " **    ** " ,
-	 " **       " ,
-	 "  *****   " ,
-	 "       ** " ,
-	 " **    ** " ,
-	 "  *****   " }
-	 
-	};
-	 
-	 for (int i=0;i<7;i++)
-	 {
-		String row[]=new String[Letters.length];
-		for (int j=0;j<Letters.length;j++)
+		String lines[]={
+			String.join(" ","  ******  " ,"  ******  " ," ********  " ,"  ******  " ),
+			String.join(" "," **    ** " ," **    ** " ," **    **  " ," **    ** " ),
+			String.join(" ","**      **" ,"**      **" ," **    **  " ," **       " ),
+			String.join(" ","**      **" ,"**      **" ," ********  " ,"  *****   " ),
+			String.join(" ","**      **" ,"**      **" ," **        " ,"       ** " ),
+			String.join(" "," **    ** " ," **    ** " ," **        " ," **    ** " ),
+			String.join(" ","  ******  " ,"  ******  " ," **        " ,"  *****   " )
+			};
+		for (int i=0; i<(lines.length); i++)
 		{
-			row[j]=Letters[j][i];
+			System.out.prinln(lines[i]);
 		}
-		System.out.println(String.join(" ",row));
-	 }
 	}
 }
