@@ -1,51 +1,119 @@
 public class Main
 {
-	public static String[] getOPattern(){
-		return new String[] 
-		{
-			 "  ******  " ,
-			 " **    ** " ,
-			 "**      **" ,
-			 "**      **" ,
-			 "**      **" ,
-			 " **    ** " ,
-			 "  ******  " 
-		};
-	}	
-	public static String[] getpPattern(){
-		return new String[] 
-		{
-			 " ********  " ,
-			 " **    **  " ,
-			 " **    **  " ,
-			 " ********  " ,
-			 " **        " ,
-			 " **        " ,
-			 " **        " 
-		};
-	}	
-	public static String[] getsPattern(){
-		return new String[] 
-		{
-			 "  ******  " ,
-			 " **    ** " ,
-			 " **       " ,
-			 "  *****   " ,
-			 "       ** " ,
-			 " **    ** " ,
-			 "  *****   "
-		};
-	}	
-	
-	public static void main(String[] args)
-	{
-		String[] oPattern = getOPattern();
-		String[] pPattern = getpPattern();
-		String[] sPattern = getsPattern();
-		
-		for (int i=0; i< oPattern.length; i++)
-		{
-			System.out.println(String.join(" ",oPattern[i],oPattern[i],pPattern[i],sPattern[i]));
-		}
-	}
+
+    static class CharacterPatternMap 
+    {
+
+        private Character character;
+        private String[] pattern;
+
+        public CharacterPatternMap(Character character, String[] pattern) {
+            this.character = character;
+            this.pattern = pattern;
+        }
+
+        public Character getCharacter() {
+            return character;
+        }
+
+        public String[] getPattern() {
+            return pattern;
+        }
+    }
+
+    public static CharacterPatternMap[] createCharacterPatternMaps() 
+    {
+        CharacterPatternMap[] maps = new CharacterPatternMap[4];
+
+        String[] O = {
+                " ***** ",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                "*     *",
+                " ***** "
+        };
+
+        String[] P = {
+                "****** ",
+                "*     *",
+                "*     *",
+                "****** ",
+                "*      ",
+                "*      ",
+                "*      "
+        };
+
+        String[] S = {
+                " ***** ",
+                "*      ",
+                "*      ",
+                " ***** ",
+                "      *",
+                "      *",
+                " ***** "
+        };
+
+        String[] space = {
+                "       ",
+                "       ",
+                "       ",
+                "       ",
+                "       ",
+                "       ",
+                "       "
+        };
+
+        maps[0] = new CharacterPatternMap('O', O);
+        maps[1] = new CharacterPatternMap('P', P);
+        maps[2] = new CharacterPatternMap('S', S);
+        maps[3] = new CharacterPatternMap(' ', space);
+
+        return maps;
+    }
+
+    public static String[] getCharacterPattern(char ch,
+                                               CharacterPatternMap[] charMaps) 
+    {
+
+        for (CharacterPatternMap map : charMaps) 
+        {
+            if (map.getCharacter() == ch) {
+                return map.getPattern();
+            }
+        }
+
+        return getCharacterPattern(' ', charMaps);
+    }
+
+    public static void printMessage(String message,
+                                    CharacterPatternMap[] charMaps) 
+    {
+
+        int height = 7;
+
+        for (int i = 0; i < height; i++) {
+
+            for (int j = 0; j < message.length(); j++) {
+
+                String[] pattern =
+                        getCharacterPattern(message.charAt(j), charMaps);
+
+                System.out.print(pattern[i] + " ");
+            }
+
+            System.out.println();
+        }
+    }
+    public static void main(String[] args) 
+    {
+
+        CharacterPatternMap[] charMaps =
+                createCharacterPatternMaps();
+
+        String message = "OOPS";
+
+        printMessage(message, charMaps);
+    }
 }
